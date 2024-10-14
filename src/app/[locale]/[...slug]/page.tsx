@@ -1,11 +1,13 @@
 import { draftMode } from "next/headers"
 import { notFound } from "next/navigation"
 import { getDraftData } from "next-drupal/draft"
-import { Article } from "@/components/drupal/Article"
-import { BasicPage } from "@/components/drupal/BasicPage"
-import { drupal } from "@/lib/drupal"
+import { Article } from "@/src/components/drupal/Article"
+import { BasicPage } from "@/src/components/drupal/BasicPage"
+import { drupal } from "@/src/lib/drupal"
 import type { Metadata, ResolvingMetadata } from "next"
 import type { DrupalNode, JsonApiParams } from "next-drupal"
+
+export const runtime = 'edge';
 
 async function getNode(slug: string[]) {
   const path = `/${slug.join("/")}`
@@ -29,7 +31,7 @@ async function getNode(slug: string[]) {
   const uuid = translatedPath.entity.uuid
 
   if (type === "node--article") {
-    params.include = "field_image,uid"
+    params.include = "field_media_image.field_media_image,uid"
   }
 
   const resource = await drupal.getResource<DrupalNode>(type, uuid, {
