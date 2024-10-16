@@ -1,44 +1,39 @@
-import { DraftAlert } from "@/src/components/misc/DraftAlert"
-import type { Metadata } from "next"
-import type { ReactNode } from "react"
-import "@/src/styles/globals.css"
-import Header from "@/src/components/header/Header"
-import Footer from "@/src/components/footer/Footer"
-import { LocaleProvider } from "@/src/contexts/LocaleContext"
+import { NextIntlClientProvider, useMessages } from 'next-intl';
+import Header from '@/src/components/Header';
+import Container from '@/src/components/Container';
+import Head from 'next/head';
+import '@/src/styles/globals.css';
 
-export const metadata: Metadata = {
-  title: {
-    default: "Laaha Homepage",
-    template: "%s | Homepage for Laaha",
-  },
-  description: "Laaha is a safe space for women and girls to discuss health, safety, violence, and relationships.",
-  icons: {
-    icon: "/favicon.ico",
-  },
-}
-
-export interface RootLayoutProps {
-  children: ReactNode,
+const RootLayout = ({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
   params: {
-    locale: string
-  }
-}
+    locale: string;
+  };
+}) => {
+  const messages = useMessages();
 
-export default function RootLayout({
-  children, params
-}: RootLayoutProps) {
   return (
-    <LocaleProvider>
-      <html lang={params.locale}>
-        <body>
-          <DraftAlert />
-          <div className="max-w-screen-md px-6 mx-auto">
+    <html lang={locale}>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;600;700&display=swap" rel="stylesheet" />
+      </Head>
+      <body suppressHydrationWarning={true}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <div>
             <Header />
-            <main className="container py-10 mx-auto">{children}</main>
-            <Footer />
+            <main>
+              <Container>{children}</Container>
+            </main>
           </div>
-        </body>
-      </html>
-    </LocaleProvider>
-  )
-}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+};
+
+export default RootLayout;
