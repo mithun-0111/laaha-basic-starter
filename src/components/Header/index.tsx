@@ -1,5 +1,3 @@
-'use client'
-
 import { FC } from 'react';
 import Container from '../Container';
 import LanguageSwitcher from '../LanguageSwitcher';

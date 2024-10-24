@@ -1,21 +1,20 @@
-import { FC } from 'react';
-import { useTranslations } from 'next-intl';
-import { Link } from '@/navigation';
+import { getMenuItems } from "@/src/lib/globalElements";
+import { getLocale } from "next-intl/server";
 
-const Menu: FC = () => {
-
-  const t = useTranslations();
+export default async function Menu() {
+  const locale = await getLocale();
+  const mainMenu = await getMenuItems(locale);
+  const {main} = mainMenu.menus;
 
   return (
-    <ul className="flex items-center">
-      <li>
-        <Link href="/">{'HOME'}</Link>
-      </li>
-      <li>
-        <Link href="/about">{'ABOUT'}</Link>
-      </li>
-    </ul>
+    <nav>
+      <ul>
+        {main.map(item => (
+          <li key={item.id}>
+            {item.title}
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
-};
-
-export default Menu;
+}

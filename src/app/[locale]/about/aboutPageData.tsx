@@ -1,13 +1,12 @@
-"use client"
 import React from 'react'
 interface AboutPageProps {
- params: {
-   locale: string
- }
+  params: {
+    locale: string
+  }
 }
+
 const AboutPageData = ({params}: AboutPageProps) => {
-  const {locale} = params
-  console.log(locale);
+  const {locale} = params;
   return (
     <div>AboutPageData</div>
   )

@@ -1,28 +1,13 @@
-"use client"
 export const runtime = 'edge'
 
-import { useEffect, useState } from 'react';
-import { drupal } from '@/src/lib/drupal';
-import { DrupalNode } from 'next-drupal';
+import { Metadata } from 'next';
 
-export default function Home() {
-  const [data, setData] = useState<Boolean>(true);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+export const metadata: Metadata = {
+  title: "Laaha Homepage",
+  description: "Laaha is a safe space for women and girls to discuss health, safety, violence, and relationships.",
+}
 
-  useEffect(() => {
-    setLoading(true);
-    setData(data);
-    setLoading(false);
-  }, []);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
+export default async function Home() {
 
   return (
     <>
