@@ -1,6 +1,7 @@
 import siteConfig from "@/site.config";
 import { getParams } from "./getparams";
 import { drupal } from "./drupal";
+import { searchIcon } from "./icons";
 
 const fetchMenuItems = async (menuType: string, locale: string) => {
   const defaultLocale = siteConfig.defaultLocale;

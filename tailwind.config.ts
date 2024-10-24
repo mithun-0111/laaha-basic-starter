@@ -46,7 +46,8 @@ const config: Config = {
         'color-tertiary': '#ffbe21',
         'red': '#cd0000',
         'red-100': '#a70000',
-        'red-wine': '#31020E'
+        'red-wine': '#31020E',
+        'gray': '#ccc'
       }
     },
   },
