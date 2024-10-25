@@ -1,7 +1,6 @@
 import siteConfig from "@/site.config";
 import { getParams } from "./getparams";
 import { drupal } from "./drupal";
-import { searchIcon } from "./icons";
 
 const fetchMenuItems = async (menuType: string, locale: string) => {
   const defaultLocale = siteConfig.defaultLocale;
@@ -11,8 +10,14 @@ const fetchMenuItems = async (menuType: string, locale: string) => {
     locale: locale,
     defaultLocale: defaultLocale,
   };
-  const menuItems = await drupal.getMenu(menuType, menuOpts);
-  return menuItems.items;
+
+  try {
+    const menuItems = await drupal.getMenu(menuType, menuOpts);
+    return menuItems.items;
+  } catch (error) {
+    console.error(`Error fetching menu items: ${error}`);
+    return [];
+  }
 };
 
 export const getMenuItems = async (locale: string) => {
@@ -24,3 +29,4 @@ export const getMenuItems = async (locale: string) => {
     },
   };
 };
+

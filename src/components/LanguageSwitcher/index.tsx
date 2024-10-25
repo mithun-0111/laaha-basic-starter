@@ -1,8 +1,8 @@
-'use client';
 import React, { FC } from 'react';
 import { useLocale } from 'next-intl';
 import ISO6391 from 'iso-639-1';
 import { locales, usePathname, useRouter } from '@/navigation';
+import './lang-switcher.scss';
 
 const LanguageSwitcher: FC = () => {
   const locale = useLocale();

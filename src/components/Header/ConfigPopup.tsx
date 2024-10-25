@@ -1,5 +1,4 @@
-'use client'
-
+import { SettingsIcon } from "@/src/lib/icons";
 import { useState } from "react"
 
 const ConfigPopup = () => {
@@ -11,7 +10,7 @@ const ConfigPopup = () => {
 
   return (
     <div className="relative">
-      <div onClick={handleClick}> Setttings </div>
+      <div onClick={handleClick}> <SettingsIcon /> </div>
       {
         isOpen && (
           <>

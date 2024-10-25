@@ -47,7 +47,9 @@ const config: Config = {
         'red': '#cd0000',
         'red-100': '#a70000',
         'red-wine': '#31020E',
-        'gray': '#ccc'
+        'gray': '#ccc',
+        'shadow-gray': '#f8f8f8',
+        'shadow-dark-gray': '#e7e7e7'
       }
     },
   },

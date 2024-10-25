@@ -3,6 +3,7 @@ import Header from '@/src/components/Header';
 import Container from '@/src/components/Container';
 import Head from 'next/head';
 import '@/src/styles/globals.css';
+import Menu from '@/src/components/Menu';
 
 const RootLayout = ({
   children,
@@ -25,7 +26,9 @@ const RootLayout = ({
       <body suppressHydrationWarning={true}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <div>
-            <Header />
+            <Header>
+              <Menu /> 
+            </Header>
             <main>
               <Container>{children}</Container>
             </main>

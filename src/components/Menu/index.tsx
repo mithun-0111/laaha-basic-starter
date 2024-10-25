@@ -8,10 +8,10 @@ export default async function Menu() {
   const { main } = mainMenu.menus;
 
   return (
-    <nav>
-      <ul className="flex flex-wrap">
-        {main.map(item => (
-          <li key={item.id} className="me-10">
+    <nav className="hidden lg:block pt-10 lg:pt-0">
+      <ul className="block lg:flex flex-wrap">
+        {main && main.map(item => (
+          <li key={item.id} className="me-0 lg:me-10 mb-2 lg:mb-0">
             <Link href={item.url}> {item.title} </Link>
           </li>
         ))}
